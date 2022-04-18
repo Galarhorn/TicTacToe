@@ -1,8 +1,25 @@
 #include <iostream>
 using std::cout;
+using std::cin;
 
 char board[3][3];
 enum { EMPTY = ' ', CROSS = 'X', ZERO = 'O' };
+
+char player_char;
+char computer_char;
+
+void init() {
+	setlocale(LC_ALL, "russian");
+	do {
+		cout << "Сделайте свой выбор [X | O]: ";
+		cin >> player_char;
+		player_char = toupper(player_char); // вернет маленькую букву в большую 'x' -> 'X'
+	} while (player_char != 'X' && player_char != 'O');
+
+	computer_char = (player_char == 'X' ? 'O' : 'X');
+}
+
+
 
 void print(const char board[3][3]) {
 	for (int i = 0; i < 3; i++) {
@@ -14,7 +31,7 @@ void print(const char board[3][3]) {
 		if (i == 2)
 		for (int j = 0; j < 3; j++) {
 			cout << "---" << ((j == 2) ? '\n' : '+');
-		}		
+		}
 	}
 }
 
