@@ -7,7 +7,7 @@ int main()
 	init();
 
 	while (!is_game_over()) {
-		print();
-		get_coords();
+		make_next_move();
 	}
+	print();
 }
